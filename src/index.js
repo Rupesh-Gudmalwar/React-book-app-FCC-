@@ -1,17 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import react from "react";
+import reactDom from "react-dom";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+// css file adding to project
+import "./index.css";
+import { books } from "./books";
+import Book from "./Book"
+import RupeshG from "./navbar"
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const BookList = function () {
+  return (
+    <react.Fragment>
+      <RupeshG></RupeshG>
+      <section className="booklist">
+        {books.map((book) => {
+          return (
+            <Book key={book.id} {...book} />
+          )
+        })
+        }
+      </section>
+    </react.Fragment>
+  )
+}
+
+reactDom.render(<BookList />, document.getElementById("root"))
